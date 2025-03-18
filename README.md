@@ -1,38 +1,68 @@
-# ComfyUI 全景圖工具
+# ComfyUI-Equirect
 
-這個 ComfyUI 自訂節點提供了全景圖（equirectangular）影像處理功能。目前支援將全景圖轉換為 cubemap 格式。
+ComfyUI节点用于全景图（等距矩形图）和立方体贴图之间的转换。
 
 ## 功能
 
-- 將全景圖（2:1 寬高比）轉換為六個 cubemap 面（前、右、後、左、上、下）
-- 支援自訂輸出面的大小
-- 支援自訂視場角度（FOV）
-- 支援 RGB 和灰階影像
+- **EquirectToCubemapNode**: 将全景图转换为6个立方体贴图面
+- **CubemapToEquirectNode**: 将6个立方体贴图面转换回全景图
 
-## 安裝
+## 安装
 
-1. 將此儲存庫複製到 ComfyUI 的 `custom_nodes` 目錄：
-```bash
-cd ComfyUI/custom_nodes
-git clone https://github.com/kukuo6666/ComfyUI-Equirect.git
-```
+1. 将此仓库克隆到ComfyUI的`custom_nodes`目录：
+   ```bash
+   cd ComfyUI/custom_nodes
+   git clone https://github.com/yourusername/ComfyUI-Equirect.git
+   ```
 
-2. 重新啟動 ComfyUI
+2. 安装依赖：
+   ```bash
+   cd ComfyUI-Equirect
+   pip install -r requirements.txt
+   ```
 
 ## 使用方法
 
-1. 在 ComfyUI 工作區中，搜尋「全景圖轉 Cubemap」節點
-2. 將全景圖影像連接到節點的輸入端
-3. 設定所需的輸出面大小和視場角度
-4. 節點將輸出六個 cubemap 面
+### EquirectToCubemapNode（全景图转立方体贴图）
 
-## 參數說明
+输入：
+- `equirect_image`: 全景图输入（等距矩形格式，2:1宽高比）
+- `face_size`: 输出立方体贴图面的尺寸
+- `fov`: 视场角度（默认为90度）
 
-- **輸入影像**：全景圖影像，必須是 2:1 寬高比
-- **輸出面大小**：每個 cubemap 面的邊長（預設：512，範圍：64-4096）
-- **視場角度**：每個面的視場角度（預設：90，範圍：60-120）
+输出：
+- `front`, `right`, `back`, `left`, `top`, `bottom`: 6个立方体贴图面
 
-## 系統需求
+### CubemapToEquirectNode（立方体贴图转全景图）
+
+输入：
+- `front`, `right`, `back`, `left`, `top`, `bottom`: 6个立方体贴图面
+- `output_height`: 输出全景图的高度（宽度将自动设为高度的2倍）
+
+输出：
+- `equirect_image`: 转换后的全景图像
+
+## 技术说明
+
+- 优先使用`py360convert`库进行高质量转换
+- 如果库不可用，会自动回退到自定义实现
+- 支持批处理和保持正确的图像格式
+
+## 依赖项
+
+- torch
+- numpy
+- pillow
+- opencv-python
+- py360convert
+
+## Parameters
+
+- **Input Image**: Equirectangular panorama image with 2:1 aspect ratio
+- **Face Size**: Edge length for each cubemap face (default: 512, range: 64-4096)
+- **Field of View**: FOV angle for each face (default: 90, range: 60-120)
+
+## System Requirements
 
 - ComfyUI
 - Python 3.7+
@@ -40,6 +70,6 @@ git clone https://github.com/kukuo6666/ComfyUI-Equirect.git
 - Pillow (PIL)
 - NumPy
 
-## 授權條款
+## License
 
-本專案採用 MIT 授權條款 - 詳見 [LICENSE](LICENSE) 檔案 
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details 

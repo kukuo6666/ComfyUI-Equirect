@@ -1,3 +1,5 @@
-numpy
-Pillow
-torch 
+torch>=1.7.0
+numpy>=1.19.0
+pillow>=8.0.0
+opencv-python>=4.5.0
+py360convert>=0.1.0 

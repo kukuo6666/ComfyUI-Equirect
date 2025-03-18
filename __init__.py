@@ -1,15 +1,20 @@
 """
-全景圖處理節點集合，用於 ComfyUI
+ComfyUI nodes for equirectangular image processing
 """
 
 from .equirect_to_cubemap import EquirectToCubemapNode
+from .cubemap_to_equirect import CubemapToEquirectNode
 
 NODE_CLASS_MAPPINGS = {
-    "EquirectToCubemap": EquirectToCubemapNode
+    "EquirectToCubemap": EquirectToCubemapNode,
+    "CubemapToEquirect": CubemapToEquirectNode,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "EquirectToCubemap": "全景圖轉 Cubemap"
+    "EquirectToCubemap": "Equirectangular to Cubemap",
+    "CubemapToEquirect": "Cubemap to Equirectangular",
 }
+
+__all__ = ['NODE_CLASS_MAPPINGS', 'NODE_DISPLAY_NAME_MAPPINGS']
 
 __version__ = "1.0.0"
