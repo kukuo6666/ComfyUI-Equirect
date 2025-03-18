@@ -1,54 +1,54 @@
 # ComfyUI-Equirect
 
-ComfyUI节点用于全景图（等距矩形图）和立方体贴图之间的转换。
+ComfyUI nodes for conversion between equirectangular panoramas and cubemaps.
 
-## 功能
+## Features
 
-- **EquirectToCubemapNode**: 将全景图转换为6个立方体贴图面
-- **CubemapToEquirectNode**: 将6个立方体贴图面转换回全景图
+- **EquirectToCubemapNode**: Convert equirectangular panoramas to 6 cubemap faces
+- **CubemapToEquirectNode**: Convert 6 cubemap faces back to equirectangular panoramas
 
-## 安装
+## Installation
 
-1. 将此仓库克隆到ComfyUI的`custom_nodes`目录：
+1. Clone this repository to your ComfyUI `custom_nodes` directory:
    ```bash
    cd ComfyUI/custom_nodes
    git clone https://github.com/yourusername/ComfyUI-Equirect.git
    ```
 
-2. 安装依赖：
+2. Install dependencies:
    ```bash
    cd ComfyUI-Equirect
    pip install -r requirements.txt
    ```
 
-## 使用方法
+## Usage
 
-### EquirectToCubemapNode（全景图转立方体贴图）
+### EquirectToCubemapNode (Equirectangular to Cubemap)
 
-输入：
-- `equirect_image`: 全景图输入（等距矩形格式，2:1宽高比）
-- `face_size`: 输出立方体贴图面的尺寸
-- `fov`: 视场角度（默认为90度）
+Inputs:
+- `equirect_image`: Equirectangular panorama input (2:1 aspect ratio)
+- `face_size`: Size of the output cubemap faces
+- `fov`: Field of view angle (default: 90 degrees)
 
-输出：
-- `front`, `right`, `back`, `left`, `top`, `bottom`: 6个立方体贴图面
+Outputs:
+- `front`, `right`, `back`, `left`, `top`, `bottom`: 6 cubemap faces
 
-### CubemapToEquirectNode（立方体贴图转全景图）
+### CubemapToEquirectNode (Cubemap to Equirectangular)
 
-输入：
-- `front`, `right`, `back`, `left`, `top`, `bottom`: 6个立方体贴图面
-- `output_height`: 输出全景图的高度（宽度将自动设为高度的2倍）
+Inputs:
+- `front`, `right`, `back`, `left`, `top`, `bottom`: 6 cubemap faces
+- `output_height`: Height of the output equirectangular image (width will be automatically set to twice the height)
 
-输出：
-- `equirect_image`: 转换后的全景图像
+Outputs:
+- `equirect_image`: Converted equirectangular panorama
 
-## 技术说明
+## Technical Notes
 
-- 优先使用`py360convert`库进行高质量转换
-- 如果库不可用，会自动回退到自定义实现
-- 支持批处理和保持正确的图像格式
+- Uses `py360convert` library for high-quality conversion when available
+- Automatically falls back to custom implementation if the library is not available
+- Supports batch processing and maintains correct image formats
 
-## 依赖项
+## Dependencies
 
 - torch
 - numpy
