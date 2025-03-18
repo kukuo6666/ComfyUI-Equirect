@@ -1,6 +1,5 @@
 """
-ComfyUI nodes for equirectangular image processing and cubemap conversion.
-Provides functionality for converting between equirectangular panoramas and cubemap faces.
+ComfyUI nodes for equirectangular image processing
 """
 
 from .equirect_to_cubemap import EquirectToCubemapNode
