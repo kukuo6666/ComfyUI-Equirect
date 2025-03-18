@@ -1,15 +1,15 @@
 # ComfyUI-Equirect
 
-ComfyUI nodes for conversion between equirectangular panoramas and cubemaps.
+A ComfyUI extension for converting between equirectangular panoramas and cubemaps. This tool provides essential functionality for 360° image processing and VR/AR content creation.
 
 ## Features
 
-- **EquirectToCubemapNode**: Convert equirectangular panoramas to 6 cubemap faces
-- **CubemapToEquirectNode**: Convert 6 cubemap faces back to equirectangular panoramas
+- **EquirectToCubemapNode**: Convert equirectangular panoramas into 6 cubemap faces
+- **CubemapToEquirectNode**: Convert 6 cubemap faces back to equirectangular panorama
 
 ## Installation
 
-1. Clone this repository to your ComfyUI `custom_nodes` directory:
+1. Clone this repository into your ComfyUI's `custom_nodes` directory:
    ```bash
    cd ComfyUI/custom_nodes
    git clone https://github.com/yourusername/ComfyUI-Equirect.git
@@ -23,30 +23,35 @@ ComfyUI nodes for conversion between equirectangular panoramas and cubemaps.
 
 ## Usage
 
-### EquirectToCubemapNode (Equirectangular to Cubemap)
+### EquirectToCubemapNode
+
+Converts a 360° panorama into six individual faces of a cubemap.
 
 Inputs:
 - `equirect_image`: Equirectangular panorama input (2:1 aspect ratio)
-- `face_size`: Size of the output cubemap faces
+- `face_size`: Output size for each cubemap face
 - `fov`: Field of view angle (default: 90 degrees)
 
 Outputs:
 - `front`, `right`, `back`, `left`, `top`, `bottom`: 6 cubemap faces
 
-### CubemapToEquirectNode (Cubemap to Equirectangular)
+### CubemapToEquirectNode
+
+Reconstructs a 360° panorama from six cubemap faces.
 
 Inputs:
 - `front`, `right`, `back`, `left`, `top`, `bottom`: 6 cubemap faces
-- `output_height`: Height of the output equirectangular image (width will be automatically set to twice the height)
+- `output_height`: Height of the output panorama (width will be 2x height)
 
 Outputs:
 - `equirect_image`: Converted equirectangular panorama
 
-## Technical Notes
+## Technical Details
 
-- Uses `py360convert` library for high-quality conversion when available
-- Automatically falls back to custom implementation if the library is not available
-- Supports batch processing and maintains correct image formats
+- High-quality conversion using `py360convert` library
+- Automatic fallback to custom implementation if needed
+- Batch processing support
+- Format preservation throughout conversion
 
 ## Dependencies
 
@@ -58,18 +63,21 @@ Outputs:
 
 ## Parameters
 
-- **Input Image**: Equirectangular panorama image with 2:1 aspect ratio
-- **Face Size**: Edge length for each cubemap face (default: 512, range: 64-4096)
-- **Field of View**: FOV angle for each face (default: 90, range: 60-120)
+- **Input Image**: Equirectangular panorama (2:1 aspect ratio)
+- **Face Size**: Cubemap face edge length (default: 512, range: 64-4096)
+- **Field of View**: View angle per face (default: 90°, range: 60-120°)
 
 ## System Requirements
 
-- ComfyUI
+- ComfyUI latest version
 - Python 3.7+
-- PyTorch
-- Pillow (PIL)
-- NumPy
+- CUDA-compatible GPU recommended
+- Sufficient GPU memory for large panoramas
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details 
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Version
+
+Current version: 1.1.0 

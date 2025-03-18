@@ -1,13 +1,15 @@
 # Installation Guide
 
 ## Requirements
-- Python 3.8+
+
+- Python 3.8 or higher
 - Latest version of ComfyUI
 - Sufficient GPU memory for processing large panoramic images
+- CUDA-compatible GPU recommended
 
 ## Basic Installation
 
-1. Clone this repository to ComfyUI's `custom_nodes` directory:
+1. Clone this repository to your ComfyUI's `custom_nodes` directory:
    ```bash
    cd ComfyUI/custom_nodes
    git clone https://github.com/yourusername/ComfyUI-Equirect.git
@@ -23,7 +25,7 @@
 
 ## Manual Installation of py360convert
 
-If `pip install py360convert` fails, you can try installing from source:
+If `pip install py360convert` fails, you can install from source:
 
 ```bash
 git clone https://github.com/sunset1995/py360convert.git
@@ -38,25 +40,37 @@ If you encounter import errors, ensure all dependencies are correctly installed:
 ```
 ImportError: No module named 'py360convert'
 ```
-
-Solution: Manually install the py360convert library.
+Solution: Manually install the py360convert library as described above.
 
 ### Memory Errors
-Processing large panoramic images may require substantial memory. If you encounter memory errors, try:
-1. Reduce the input image size
-2. Lower the cubemap face size
+Processing large panoramic images requires substantial memory. If you encounter memory errors:
+1. Reduce input image size
+2. Lower cubemap face size
 3. Use a device with more GPU memory
 
 ### Conversion Quality
 
-For best conversion quality:
-1. Use high-resolution input images (at least 4K)
+For optimal conversion quality:
+1. Use high-resolution input images (4K or higher recommended)
 2. Set cubemap face size to 512 or higher
-3. Keep default FOV (90 degrees)
+3. Maintain default FOV (90 degrees)
 
 ## Performance Optimization
 
-To speed up processing:
-1. Ensure PyTorch with CUDA support is correctly installed
-2. Use reasonable image sizes (unnecessarily large sizes will increase processing time)
-3. Process images individually if batch processing is not required 
+To improve processing speed:
+1. Ensure PyTorch with CUDA support is properly installed
+2. Use appropriate image sizes (larger sizes increase processing time)
+3. Process images individually when batch processing is not required
+
+## Version Compatibility
+
+- Tested with Python 3.8-3.12
+- Compatible with latest ComfyUI releases
+- Requires CUDA-capable GPU for optimal performance
+
+## Support
+
+For issues and questions:
+1. Check the GitHub issues page
+2. Ensure all dependencies are correctly installed
+3. Verify input image formats and sizes 
