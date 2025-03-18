@@ -1,0 +1,15 @@
+[project]
+name = "equirect"
+description = "Tools for processing equirectangular images, supporting conversion from equirectangular format to cubemap."
+version = "1.0.0"
+license = {file = "LICENSE"}
+dependencies = ["torch>=1.7.0", "numpy>=1.19.0", "pillow>=8.0.0", "py360convert>=0.1.0", "opencv-python>=4.5.0"]
+
+[project.urls]
+Repository = "https://github.com/kukuo6666/ComfyUI-Equirect"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "ComfyUI-Equirect"
+Icon = ""
