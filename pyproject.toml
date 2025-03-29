@@ -10,6 +10,6 @@ Repository = "https://github.com/kukuo6666/ComfyUI-Equirect"
 #  Used by Comfy Registry https://comfyregistry.org
 
 [tool.comfy]
-PublisherId = ""
+PublisherId = "kukuo6"
 DisplayName = "ComfyUI-Equirect"
 Icon = ""
